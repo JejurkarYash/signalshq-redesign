@@ -1,14 +1,84 @@
+/* Google Fonts — must be before @import "tailwindcss" (which generates rules) */
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Space+Grotesk:wght@300..700&display=swap');
+
 @import "tailwindcss";
 
+
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0A0A0D;
+  --foreground: #F2F2F5;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+/* ── Thin, subtle scrollbar ── */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #2C2C35 transparent;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2C2C35;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3C3C48;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
 
+  /* Fonts — semantic tokens */
+  --font-heading: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* ── Color Palette ── */
+
+  /* Backgrounds — dark tier system */
+  --color-base: #0A0A0D;
+  --color-surface: #131318;
+  --color-elevated: #1C1C23;
+  --color-hairline: #2C2C35;
+
+  /* Primary — Violet */
+  --color-primary: #9B84EA;
+  --color-primary-hover: #B3A1F0;
+  --color-primary-muted: rgba(155, 132, 234, 0.15);
+  --color-accent-violet: #9B84EA;
+  --color-accent-violet-muted: rgba(155, 132, 234, 0.15);
+
+  /* Secondary — Muted Gold */
+  --color-secondary: #C9A84C;
+  --color-secondary-hover: #DBBD6A;
+  --color-secondary-muted: rgba(201, 168, 76, 0.15);
+
+  /* Verified — Deep Ledger Green */
+  --color-verified: #3D8B6E;
+  --color-verified-hover: #4FA882;
+  --color-verified-muted: rgba(61, 139, 110, 0.15);
+
+  /* Text */
+  --color-text-primary: #F2F2F5;
+  --color-text-secondary: #9B9BA6;
+  --color-text-muted: #5C5C66;
+  --color-text-on-accent: #0A0A0D;
+}
