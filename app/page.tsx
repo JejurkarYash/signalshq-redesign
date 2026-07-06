@@ -2,6 +2,8 @@ import NavBar from "@/components/sections/NavBar";
 import Hero from "@/components/sections/Hero";
 import ProductWalkthrough from "@/components/sections/ProductWalkthrough";
 import ImpactMetrics from "@/components/sections/ImpactMetrics";
+import ProductWorkflow from "@/components/sections/ProductWorkflow";
+import UseCases from "@/components/sections/UseCases";
 
 export default function Home() {
   return (
@@ -11,6 +13,8 @@ export default function Home() {
         <Hero />
         <ProductWalkthrough />
         <ImpactMetrics />
+        <ProductWorkflow />
+        <UseCases />
       </main>
     </div>
   );
