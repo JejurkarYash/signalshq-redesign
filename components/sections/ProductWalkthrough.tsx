@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { motion } from "framer-motion";
 
 export default function ProductWalkthrough() {
   return (
@@ -26,25 +27,45 @@ export default function ProductWalkthrough() {
         {/* ── THE EXHIBIT FRAME ── */}
         <div className="relative w-full">
           
-          {/* Corner Registration Marks (Offset ~-8px) */}
+          {/* Corner Registration Marks (Slide to lock on scroll) */}
           {/* Top Left */}
-          <div 
-            className="absolute -top-2 -left-2 w-4 h-4 max-[900px]:w-2.5 max-[900px]:h-2.5 border-t-[1.5px] border-l-[1.5px] border-hairline pointer-events-none" 
+          <motion.div 
+            className="absolute w-4 h-4 max-[900px]:w-2.5 max-[900px]:h-2.5 border-t-[1.5px] border-l-[1.5px] border-hairline pointer-events-none" 
+            initial={{ x: 8, y: 8, opacity: 0 }}
+            whileInView={{ x: 0, y: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
+            style={{ top: "-8px", left: "-8px" }}
             aria-hidden="true" 
           />
           {/* Top Right */}
-          <div 
-            className="absolute -top-2 -right-2 w-4 h-4 max-[900px]:w-2.5 max-[900px]:h-2.5 border-t-[1.5px] border-r-[1.5px] border-hairline pointer-events-none" 
+          <motion.div 
+            className="absolute w-4 h-4 max-[900px]:w-2.5 max-[900px]:h-2.5 border-t-[1.5px] border-r-[1.5px] border-hairline pointer-events-none" 
+            initial={{ x: -8, y: 8, opacity: 0 }}
+            whileInView={{ x: 0, y: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
+            style={{ top: "-8px", right: "-8px" }}
             aria-hidden="true" 
           />
           {/* Bottom Left */}
-          <div 
-            className="absolute -bottom-2 -left-2 w-4 h-4 max-[900px]:w-2.5 max-[900px]:h-2.5 border-b-[1.5px] border-l-[1.5px] border-hairline pointer-events-none" 
+          <motion.div 
+            className="absolute w-4 h-4 max-[900px]:w-2.5 max-[900px]:h-2.5 border-b-[1.5px] border-l-[1.5px] border-hairline pointer-events-none" 
+            initial={{ x: 8, y: -8, opacity: 0 }}
+            whileInView={{ x: 0, y: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
+            style={{ bottom: "-8px", left: "-8px" }}
             aria-hidden="true" 
           />
           {/* Bottom Right */}
-          <div 
-            className="absolute -bottom-2 -right-2 w-4 h-4 max-[900px]:w-2.5 max-[900px]:h-2.5 border-b-[1.5px] border-r-[1.5px] border-hairline pointer-events-none" 
+          <motion.div 
+            className="absolute w-4 h-4 max-[900px]:w-2.5 max-[900px]:h-2.5 border-b-[1.5px] border-r-[1.5px] border-hairline pointer-events-none" 
+            initial={{ x: -8, y: -8, opacity: 0 }}
+            whileInView={{ x: 0, y: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
+            style={{ bottom: "-8px", right: "-8px" }}
             aria-hidden="true" 
           />
 

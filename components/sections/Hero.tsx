@@ -101,12 +101,33 @@ export default function Hero() {
                   placeholder="What's your work email"
                   className="w-full bg-transparent border-none rounded-none text-text-primary placeholder:text-text-secondary/60 text-[14px] font-body px-[18px] py-[14px] focus:outline-none"
                 />
-                <button
+                <motion.button
                   type="submit"
-                  className="w-full sm:w-auto bg-text-primary hover:bg-primary text-text-on-accent text-[14.5px] font-semibold font-body px-7 py-[14px] rounded-none transition-colors duration-150 whitespace-nowrap cursor-pointer"
+                  className="relative w-full sm:w-auto shrink-0 font-body text-[14.5px] font-semibold rounded-none cursor-pointer px-7 py-[14px] bg-text-primary text-text-on-accent outline-none overflow-hidden hover:bg-primary border-t sm:border-t-0 sm:border-l border-hairline whitespace-nowrap"
+                  whileHover="hover"
+                  whileTap={{ scale: 0.97 }}
+                  transition={{ duration: 0.2, ease: "easeInOut" }}
                 >
-                  Request a demo
-                </button>
+                  {/* Animated background fill that slides out on hover */}
+                  <motion.span
+                    className="absolute inset-0 bg-text-primary origin-left"
+                    variants={{
+                      hover: { scaleX: 0, opacity: 0 },
+                    }}
+                    initial={{ scaleX: 1, opacity: 1 }}
+                    transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
+                    aria-hidden="true"
+                  />
+                  <motion.span
+                    className="relative z-10 text-text-on-accent"
+                    variants={{
+                      hover: { color: "var(--color-text-on-accent)" },
+                    }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    Request a demo
+                  </motion.span>
+                </motion.button>
               </form>
               <p className="mt-3 font-mono text-[11px] text-text-muted tracking-tight">
                 No credit card required · 20-minute walkthrough
@@ -140,25 +161,41 @@ export default function Hero() {
                 viewport={{ once: true }}
                 custom={0.4}
               >
-                {/* Corner Registration Marks (Positioned inside the card so they rotate with it) */}
+                {/* Corner Registration Marks (Positioned inside the card so they rotate with it, sliding out on load) */}
                 {/* Top Left */}
-                <div 
-                  className="absolute -top-2.5 -left-2.5 w-4 h-4 max-[900px]:w-2.5 max-[900px]:h-2.5 border-t-[1.5px] border-l-[1.5px] border-hairline pointer-events-none" 
+                <motion.div 
+                  className="absolute w-4 h-4 max-[900px]:w-2.5 max-[900px]:h-2.5 border-t-[1.5px] border-l-[1.5px] border-hairline pointer-events-none" 
+                  initial={{ x: 8, y: 8, opacity: 0 }}
+                  animate={{ x: 0, y: 0, opacity: 1 }}
+                  transition={{ duration: 0.5, delay: 0.6, ease: "easeOut" }}
+                  style={{ top: "-10px", left: "-10px" }}
                   aria-hidden="true" 
                 />
                 {/* Top Right */}
-                <div 
-                  className="absolute -top-2.5 -right-2.5 w-4 h-4 max-[900px]:w-2.5 max-[900px]:h-2.5 border-t-[1.5px] border-r-[1.5px] border-hairline pointer-events-none" 
+                <motion.div 
+                  className="absolute w-4 h-4 max-[900px]:w-2.5 max-[900px]:h-2.5 border-t-[1.5px] border-r-[1.5px] border-hairline pointer-events-none" 
+                  initial={{ x: -8, y: 8, opacity: 0 }}
+                  animate={{ x: 0, y: 0, opacity: 1 }}
+                  transition={{ duration: 0.5, delay: 0.6, ease: "easeOut" }}
+                  style={{ top: "-10px", right: "-10px" }}
                   aria-hidden="true" 
                 />
                 {/* Bottom Left */}
-                <div 
-                  className="absolute -bottom-2.5 -left-2.5 w-4 h-4 max-[900px]:w-2.5 max-[900px]:h-2.5 border-b-[1.5px] border-l-[1.5px] border-hairline pointer-events-none" 
+                <motion.div 
+                  className="absolute w-4 h-4 max-[900px]:w-2.5 max-[900px]:h-2.5 border-b-[1.5px] border-l-[1.5px] border-hairline pointer-events-none" 
+                  initial={{ x: 8, y: -8, opacity: 0 }}
+                  animate={{ x: 0, y: 0, opacity: 1 }}
+                  transition={{ duration: 0.5, delay: 0.6, ease: "easeOut" }}
+                  style={{ bottom: "-10px", left: "-10px" }}
                   aria-hidden="true" 
                 />
                 {/* Bottom Right */}
-                <div 
-                  className="absolute -bottom-2.5 -right-2.5 w-4 h-4 max-[900px]:w-2.5 max-[900px]:h-2.5 border-b-[1.5px] border-r-[1.5px] border-hairline pointer-events-none" 
+                <motion.div 
+                  className="absolute w-4 h-4 max-[900px]:w-2.5 max-[900px]:h-2.5 border-b-[1.5px] border-r-[1.5px] border-hairline pointer-events-none" 
+                  initial={{ x: -8, y: -8, opacity: 0 }}
+                  animate={{ x: 0, y: 0, opacity: 1 }}
+                  transition={{ duration: 0.5, delay: 0.6, ease: "easeOut" }}
+                  style={{ bottom: "-10px", right: "-10px" }}
                   aria-hidden="true" 
                 />
 

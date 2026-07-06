@@ -141,25 +141,45 @@ export default function ImpactMetrics() {
                 aria-hidden="true"
               />
 
-              {/* Corner Registration Marks (Offset -8px) */}
+              {/* Corner Registration Marks (Slide to lock on scroll) */}
               {/* Top Left */}
-              <div 
-                className="absolute -top-2 -left-2 w-4 h-4 max-[900px]:w-2.5 max-[900px]:h-2.5 border-t-[1.5px] border-l-[1.5px] border-hairline pointer-events-none z-20" 
+              <motion.div 
+                className="absolute w-4 h-4 max-[900px]:w-2.5 max-[900px]:h-2.5 border-t-[1.5px] border-l-[1.5px] border-hairline pointer-events-none z-20" 
+                initial={{ x: 8, y: 8, opacity: 0 }}
+                whileInView={{ x: 0, y: 0, opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
+                style={{ top: "-8px", left: "-8px" }}
                 aria-hidden="true" 
               />
               {/* Top Right */}
-              <div 
-                className="absolute -top-2 -right-2 w-4 h-4 max-[900px]:w-2.5 max-[900px]:h-2.5 border-t-[1.5px] border-r-[1.5px] border-hairline pointer-events-none z-20" 
+              <motion.div 
+                className="absolute w-4 h-4 max-[900px]:w-2.5 max-[900px]:h-2.5 border-t-[1.5px] border-r-[1.5px] border-hairline pointer-events-none z-20" 
+                initial={{ x: -8, y: 8, opacity: 0 }}
+                whileInView={{ x: 0, y: 0, opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
+                style={{ top: "-8px", right: "-8px" }}
                 aria-hidden="true" 
               />
               {/* Bottom Left */}
-              <div 
-                className="absolute -bottom-2 -left-2 w-4 h-4 max-[900px]:w-2.5 max-[900px]:h-2.5 border-b-[1.5px] border-l-[1.5px] border-hairline pointer-events-none z-20" 
+              <motion.div 
+                className="absolute w-4 h-4 max-[900px]:w-2.5 max-[900px]:h-2.5 border-b-[1.5px] border-l-[1.5px] border-hairline pointer-events-none z-20" 
+                initial={{ x: 8, y: -8, opacity: 0 }}
+                whileInView={{ x: 0, y: 0, opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
+                style={{ bottom: "-8px", left: "-8px" }}
                 aria-hidden="true" 
               />
               {/* Bottom Right */}
-              <div 
-                className="absolute -bottom-2 -right-2 w-4 h-4 max-[900px]:w-2.5 max-[900px]:h-2.5 border-b-[1.5px] border-r-[1.5px] border-hairline pointer-events-none z-20" 
+              <motion.div 
+                className="absolute w-4 h-4 max-[900px]:w-2.5 max-[900px]:h-2.5 border-b-[1.5px] border-r-[1.5px] border-hairline pointer-events-none z-20" 
+                initial={{ x: -8, y: -8, opacity: 0 }}
+                whileInView={{ x: 0, y: 0, opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
+                style={{ bottom: "-8px", right: "-8px" }}
                 aria-hidden="true" 
               />
 
@@ -190,15 +210,36 @@ export default function ImpactMetrics() {
                 {/* Connecting Lines SVG */}
                 <svg className="absolute inset-0 w-full h-full pointer-events-none z-0">
                   {/* Line 1 (Top Left) to Line 3 (Middle Left) - Neutral Hairline */}
-                  <line x1="22%" y1="16%" x2="20%" y2="54%" stroke="var(--color-hairline)" strokeWidth="1" />
+                  <motion.line 
+                    x1="22%" y1="16%" x2="20%" y2="54%" 
+                    stroke="var(--color-hairline)" strokeWidth="1" 
+                    initial={{ pathLength: 0, opacity: 0 }}
+                    whileInView={{ pathLength: 1, opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, delay: 0.3, ease: "easeInOut" }}
+                  />
                   <rect x="21%" y="35%" width="4" height="4" transform="translate(-2, -2)" fill="var(--color-hairline)" />
 
                   {/* Line 2 (Upper Right) to Line 4 (Lower Right) - Muted Violet */}
-                  <line x1="75%" y1="36%" x2="78%" y2="70%" stroke="var(--color-accent-violet)" strokeOpacity="0.2" strokeWidth="1" />
+                  <motion.line 
+                    x1="75%" y1="36%" x2="78%" y2="70%" 
+                    stroke="var(--color-accent-violet)" strokeOpacity="0.2" strokeWidth="1" 
+                    initial={{ pathLength: 0, opacity: 0 }}
+                    whileInView={{ pathLength: 1, opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, delay: 0.5, ease: "easeInOut" }}
+                  />
                   <rect x="76.5%" y="53%" width="4" height="4" transform="translate(-2, -2)" fill="var(--color-hairline)" />
 
                   {/* Line 3 (Middle Left) to Line 5 (Bottom Left) - Neutral Hairline */}
-                  <line x1="20%" y1="56%" x2="30%" y2="88%" stroke="var(--color-hairline)" strokeWidth="1" />
+                  <motion.line 
+                    x1="20%" y1="56%" x2="30%" y2="88%" 
+                    stroke="var(--color-hairline)" strokeWidth="1" 
+                    initial={{ pathLength: 0, opacity: 0 }}
+                    whileInView={{ pathLength: 1, opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, delay: 0.4, ease: "easeInOut" }}
+                  />
                   <rect x="25%" y="72%" width="4" height="4" transform="translate(-2, -2)" fill="var(--color-hairline)" />
                 </svg>
 

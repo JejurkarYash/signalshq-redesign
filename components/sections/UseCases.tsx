@@ -88,21 +88,21 @@ export default function UseCases() {
               variants={cardVariants}
             >
               
-              {/* Corner Registration Marks (Offset -6px, visible only on hover for subtle focus) */}
+              {/* Corner Registration Marks (Slide outwards on hover for focus lock effect) */}
               <div 
-                className="absolute -top-1.5 -left-1.5 w-3 h-3 border-t-[1.5px] border-l-[1.5px] border-hairline opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" 
+                className="absolute top-0 left-0 w-3 h-3 border-t-[1.5px] border-l-[1.5px] border-hairline opacity-0 group-hover:opacity-100 group-hover:-top-1.5 group-hover:-left-1.5 transition-all duration-300 pointer-events-none" 
                 aria-hidden="true" 
               />
               <div 
-                className="absolute -top-1.5 -right-1.5 w-3 h-3 border-t-[1.5px] border-r-[1.5px] border-hairline opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" 
+                className="absolute top-0 right-0 w-3 h-3 border-t-[1.5px] border-r-[1.5px] border-hairline opacity-0 group-hover:opacity-100 group-hover:-top-1.5 group-hover:-right-1.5 transition-all duration-300 pointer-events-none" 
                 aria-hidden="true" 
               />
               <div 
-                className="absolute -bottom-1.5 -left-1.5 w-3 h-3 border-b-[1.5px] border-l-[1.5px] border-hairline opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" 
+                className="absolute bottom-0 left-0 w-3 h-3 border-b-[1.5px] border-l-[1.5px] border-hairline opacity-0 group-hover:opacity-100 group-hover:-bottom-1.5 group-hover:-left-1.5 transition-all duration-300 pointer-events-none" 
                 aria-hidden="true" 
               />
               <div 
-                className="absolute -bottom-1.5 -right-1.5 w-3 h-3 border-b-[1.5px] border-r-[1.5px] border-hairline opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" 
+                className="absolute bottom-0 right-0 w-3 h-3 border-b-[1.5px] border-r-[1.5px] border-hairline opacity-0 group-hover:opacity-100 group-hover:-bottom-1.5 group-hover:-right-1.5 transition-all duration-300 pointer-events-none" 
                 aria-hidden="true" 
               />
 

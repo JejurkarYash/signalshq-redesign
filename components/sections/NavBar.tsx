@@ -37,9 +37,9 @@ export default function NavBar() {
             <Image
               src="https://framerusercontent.com/images/iwSFw1ZVxkvBFwIkynOTSZnUtg.png?width=160&height=40"
               alt="SignalsHQ"
-              width={140}
-              height={28}
-              className="h-7"
+              width={160}
+              height={32}
+              className="h-8"
               style={{ width: "auto" }}
               priority
             />
