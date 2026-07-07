@@ -2,7 +2,7 @@
 
 A high-fidelity redesign of [SignalsHQ](https://signalshq.io/), reimagined with a premium, technical B2B "document dossier" aesthetic. Built on a foundations of high-contrast layout, sharp edges, structured data ledgers, and highly focused micro-animations.
 
-**🔗 Live Demo Link:** [https://signalshq-redesign-two.vercel.app/](https://signalshq-redesign.vercel.app)
+**🔗 Live Demo Link:** <a href="https://signalshq-redesign-two.vercel.app/" target="_blank" rel="noopener noreferrer">signalshq-redesign-two.vercel.app</a>
 
 ---
 
