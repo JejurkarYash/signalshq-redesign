@@ -10,7 +10,7 @@ const fadeUp = {
   visible: (delay: number) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, delay, ease: [0.25, 0.1, 0.25, 1] },
+    transition: { duration: 0.6, delay, ease: [0.25, 0.1, 0.25, 1] as const },
   }),
 };
 
@@ -115,7 +115,7 @@ export default function Hero() {
                       hover: { scaleX: 0, opacity: 0 },
                     }}
                     initial={{ scaleX: 1, opacity: 1 }}
-                    transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
+                    transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] as const }}
                     aria-hidden="true"
                   />
                   <motion.span

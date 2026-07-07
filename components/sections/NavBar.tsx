@@ -158,7 +158,7 @@ export default function NavBar() {
                   hover: { scaleX: 0, opacity: 0 },
                 }}
                 initial={{ scaleX: 1, opacity: 1 }}
-                transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
+                transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] as const }}
                 aria-hidden="true"
               />
               <motion.span

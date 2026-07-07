@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import React from "react";
 
 /* ── Animation configurations ── */
 const fadeUp = {
@@ -9,7 +8,7 @@ const fadeUp = {
   visible: (delay: number) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, delay, ease: [0.25, 0.1, 0.25, 1] },
+    transition: { duration: 0.6, delay, ease: [0.25, 0.1, 0.25, 1] as const },
   }),
 };
 
@@ -28,7 +27,7 @@ const ticketItem = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.4, ease: "easeOut" },
+    transition: { duration: 0.4, ease: "easeOut" } as const,
   },
 };
 
