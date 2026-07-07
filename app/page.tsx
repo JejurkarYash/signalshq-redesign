@@ -8,10 +8,14 @@ import CustomerStories from "@/components/sections/CustomerStories";
 import SecurityTrust from "@/components/sections/SecurityTrust";
 import BottomCTA from "@/components/sections/BottomCTA";
 import Footer from "@/components/sections/Footer";
+import SmoothScroll from "@/components/utils/SmoothScroll";
+import InteractiveSpotlight from "@/components/utils/InteractiveSpotlight";
 
 export default function Home() {
   return (
     <div className="flex flex-col flex-1 min-h-screen bg-base">
+      <SmoothScroll />
+      <InteractiveSpotlight />
       <NavBar />
       <main className="flex flex-col flex-1">
         <Hero />

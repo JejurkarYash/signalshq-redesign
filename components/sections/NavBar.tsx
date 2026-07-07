@@ -17,6 +17,8 @@ const NAV_LINKS = [
 
 export default function NavBar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [resourcesDropdownOpen, setResourcesDropdownOpen] = useState(false);
+  const [mobileResourcesOpen, setMobileResourcesOpen] = useState(false);
 
   return (
     <>
@@ -47,19 +49,91 @@ export default function NavBar() {
 
           {/* ── Desktop nav links (center-right) ── */}
           <ul className="hidden lg:flex items-center gap-8">
-            {NAV_LINKS.map(({ label, href }) => (
-              <li key={label}>
-                <Link
-                  href={href}
-                  className="font-body text-[15px] font-normal text-text-secondary
-                             hover:text-text-primary transition-colors duration-150 ease-in-out
-                             outline-none focus-visible:outline-2
-                             focus-visible:outline-offset-2 focus-visible:outline-primary"
-                >
-                  {label}
-                </Link>
-              </li>
-            ))}
+            {NAV_LINKS.map(({ label, href }) => {
+              if (label === "Resource") {
+                return (
+                  <li 
+                    key={label}
+                    className="relative py-4"
+                    onMouseEnter={() => setResourcesDropdownOpen(true)}
+                    onMouseLeave={() => setResourcesDropdownOpen(false)}
+                  >
+                    <button
+                      type="button"
+                      className="font-body text-[15px] font-normal text-text-secondary
+                                 hover:text-text-primary transition-colors duration-150 ease-in-out
+                                 outline-none focus-visible:outline-2
+                                 focus-visible:outline-offset-2 focus-visible:outline-primary flex items-center gap-1 cursor-pointer"
+                    >
+                      Resources
+                      <svg 
+                        className={`w-3.5 h-3.5 transition-transform duration-200 ${resourcesDropdownOpen ? "rotate-180" : ""}`}
+                        fill="none" 
+                        viewBox="0 0 24 24" 
+                        stroke="currentColor" 
+                        strokeWidth="2.5"
+                      >
+                        <polyline points="6 9 12 15 18 9" />
+                      </svg>
+                    </button>
+
+                    <AnimatePresence>
+                      {resourcesDropdownOpen && (
+                        <motion.div
+                          initial={{ opacity: 0, y: 8, scale: 0.98 }}
+                          animate={{ opacity: 1, y: 0, scale: 1 }}
+                          exit={{ opacity: 0, y: 6, scale: 0.98 }}
+                          transition={{ duration: 0.15, ease: "easeOut" }}
+                          className="absolute top-full left-1/2 -translate-x-1/2 mt-3 bg-elevated border border-hairline p-3 w-[220px] flex flex-col z-50 rounded-none shadow-2xl"
+                        >
+                          {/* Viewfinder corner brackets around dropdown card */}
+                          <div className="absolute -top-1 -left-1 w-2 h-2 border-t border-l border-hairline pointer-events-none" />
+                          <div className="absolute -top-1 -right-1 w-2 h-2 border-t border-r border-hairline pointer-events-none" />
+                          <div className="absolute -bottom-1 -left-1 w-2 h-2 border-b border-l border-hairline pointer-events-none" />
+                          <div className="absolute -bottom-1 -right-1 w-2 h-2 border-b border-r border-hairline pointer-events-none" />
+
+                          {/* Index Header */}
+                          <div className="font-mono text-[9px] text-text-muted tracking-[0.08em] uppercase border-b border-hairline pb-2.5 mb-2 px-1 select-none">
+                            § DOCUMENT REGISTRY
+                          </div>
+
+                          <Link 
+                            href="#articles" 
+                            className="group flex items-center gap-2.5 px-1 py-1.5 font-body text-[13.5px] text-text-secondary hover:text-text-primary transition-colors rounded-none text-left"
+                          >
+                            {/* Technical Bullet Box */}
+                            <div className="w-2 h-2 border border-hairline bg-base flex-shrink-0 group-hover:border-primary group-hover:bg-primary/20 transition-all rounded-none" />
+                            <span>Articles & Insights</span>
+                          </Link>
+                          <Link 
+                            href="#downloads" 
+                            className="group flex items-center gap-2.5 px-1 py-1.5 font-body text-[13.5px] text-text-secondary hover:text-text-primary transition-colors rounded-none text-left"
+                          >
+                            {/* Technical Bullet Box */}
+                            <div className="w-2 h-2 border border-hairline bg-base flex-shrink-0 group-hover:border-primary group-hover:bg-primary/20 transition-all rounded-none" />
+                            <span>Downloads</span>
+                          </Link>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </li>
+                );
+              }
+
+              return (
+                <li key={label}>
+                  <Link
+                    href={href}
+                    className="font-body text-[15px] font-normal text-text-secondary
+                               hover:text-text-primary transition-colors duration-150 ease-in-out
+                               outline-none focus-visible:outline-2
+                               focus-visible:outline-offset-2 focus-visible:outline-primary"
+                  >
+                    {label === "Use Case" ? "Use Cases" : label}
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
 
           {/* ── Right zone: CTA + hamburger ── */}
@@ -133,31 +207,101 @@ export default function NavBar() {
           >
             <div className="flex flex-col flex-1 overflow-y-auto px-5 py-6">
               <ul className="flex flex-col">
-                {NAV_LINKS.map(({ label, href }, index) => (
-                  <motion.li
-                    key={label}
-                    className="border-b border-hairline"
-                    initial={{ opacity: 0, x: -16 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{
-                      delay: 0.05 * index,
-                      duration: 0.25,
-                      ease: "easeOut",
-                    }}
-                  >
-                    <Link
-                      href={href}
-                      className="flex items-center py-4
-                                 font-body text-[16px] font-normal text-text-secondary
-                                 hover:text-text-primary transition-colors duration-150 ease-in-out
-                                 outline-none focus-visible:outline-2
-                                 focus-visible:outline-offset-2 focus-visible:outline-primary"
-                      onClick={() => setMobileMenuOpen(false)}
+                {NAV_LINKS.map(({ label, href }, index) => {
+                  if (label === "Resource") {
+                    return (
+                      <motion.li
+                        key={label}
+                        className="border-b border-hairline flex flex-col"
+                        initial={{ opacity: 0, x: -16 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{
+                          delay: 0.05 * index,
+                          duration: 0.25,
+                          ease: "easeOut",
+                        }}
+                      >
+                        <button
+                          type="button"
+                          onClick={() => setMobileResourcesOpen(!mobileResourcesOpen)}
+                          className="flex items-center justify-between py-4 w-full
+                                     font-body text-[16px] font-normal text-text-secondary
+                                     hover:text-text-primary transition-colors duration-150 ease-in-out
+                                     outline-none text-left"
+                        >
+                          <span>Resources</span>
+                          <svg 
+                            className={`w-4 h-4 transition-transform duration-200 ${mobileResourcesOpen ? "rotate-180" : ""}`}
+                            fill="none" 
+                            viewBox="0 0 24 24" 
+                            stroke="currentColor" 
+                            strokeWidth="2.5"
+                          >
+                            <polyline points="6 9 12 15 18 9" />
+                          </svg>
+                        </button>
+                        <AnimatePresence initial={false}>
+                          {mobileResourcesOpen && (
+                            <motion.div
+                              initial={{ height: 0, opacity: 0 }}
+                              animate={{ height: "auto", opacity: 1 }}
+                              exit={{ height: 0, opacity: 0 }}
+                              transition={{ duration: 0.2, ease: "easeInOut" }}
+                              className="overflow-hidden pl-4 flex flex-col gap-3.5 pb-4"
+                            >
+                              <Link 
+                                href="#articles" 
+                                className="font-body text-[14.5px] text-text-secondary hover:text-text-primary transition-colors"
+                                onClick={() => {
+                                  setMobileMenuOpen(false);
+                                  setMobileResourcesOpen(false);
+                                }}
+                              >
+                                Articles & Insights
+                              </Link>
+                              <Link 
+                                href="#downloads" 
+                                className="font-body text-[14.5px] text-text-secondary hover:text-text-primary transition-colors"
+                                onClick={() => {
+                                  setMobileMenuOpen(false);
+                                  setMobileResourcesOpen(false);
+                                }}
+                              >
+                                Downloads
+                              </Link>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </motion.li>
+                    );
+                  }
+
+                  return (
+                    <motion.li
+                      key={label}
+                      className="border-b border-hairline"
+                      initial={{ opacity: 0, x: -16 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{
+                        delay: 0.05 * index,
+                        duration: 0.25,
+                        ease: "easeOut",
+                      }}
                     >
-                      {label}
-                    </Link>
-                  </motion.li>
-                ))}
+                      <Link
+                        href={href}
+                        className="flex items-center py-4
+                                   font-body text-[16px] font-normal text-text-secondary
+                                   hover:text-text-primary transition-colors duration-150 ease-in-out
+                                   outline-none focus-visible:outline-2
+                                   focus-visible:outline-offset-2 focus-visible:outline-primary"
+                        onClick={() => setMobileMenuOpen(false)}
+                      >
+                        {label === "Use Case" ? "Use Cases" : label}
+                      </Link>
+                    </motion.li>
+                  );
+                })}
               </ul>
             </div>
           </motion.div>
